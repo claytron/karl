@@ -9,7 +9,15 @@ $(document).ready(function() {
     // See if the wiki plugin needs to be enabled.
     var widget_data = window.karl_client_data && karl_client_data.text || {};
     var kaltura_data = window.karl_client_data && karl_client_data.kaltura || {};
-    var plugins = 'paste,embedmedia,spellchecker,imagedrawer,advimagescale,advlist,print,table,tinyautosave';
+    var plugins = 'paste,embedmedia,spellchecker,imagedrawer,advimagescale,advlist,print,table';
+
+    var is_ie7 = $.browser.msie && parseInt($.browser.version, 10) == 7;
+    if (! is_ie7) {
+        // autosave is disabled on IE7,
+        // enabled on all other browsers
+        plugins += ',tinyautosave';
+    }
+    
     if (widget_data.enable_wiki_plugin) {
         plugins += ',wicked';
     }
@@ -55,7 +63,6 @@ $(document).ready(function() {
         theme_advanced_buttons1: 'bold, italic, underline, |, forecolor, backcolor, removeformat, |, bullist, numlist, |, justifycenter, justifyleft,justifyright, justifyfull, |, indent, outdent, |, image, embedmedia, kaltura, |, print',
         theme_advanced_buttons2: 'formatselect, fontselect, fontsizeselect, |, blockquote, hr, |, link, addwickedlink, delwickedlink, code, spellchecker, tinyautosave',
         theme_advanced_buttons3: '',
-        theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "center",
         plugins: plugins,
         extended_valid_elements: "object[classid|codebase|width|height],param[name|value],embed[quality|type|pluginspage|width|height|src|wmode|swliveconnect|allowscriptaccess|allowfullscreen|seamlesstabbing|name|base|flashvars|flashVars|bgcolor],script[src]",
@@ -63,6 +70,8 @@ $(document).ready(function() {
         forced_root_block : 'p',
         spellchecker_rpc_url: app_url + "/tinymce_spellcheck",
         spellchecker_languages : "+English=en",
+        // autosave
+        //tinyautosave_interval_seconds: 60,
         // options for imagedrawer
         imagedrawer_dialog_url: here_url + 'drawer_dialog_view.html',
         imagedrawer_upload_url: here_url + 'drawer_upload_view.html',
