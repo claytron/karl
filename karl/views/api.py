@@ -95,6 +95,7 @@ class TemplateAPI(object):
         self.js_devel_mode = self.settings.get('js_devel_mode', None)
         self.read_only = self.settings.get('read_only', False)
         self.static_url = '%s/static/%s' % (app_url, _get_static_rev())
+        self.static_jslibs_url = '%s/jslibs-static/%s' % (app_url, _get_static_rev())
 
         # this data will be provided for the client javascript
         self.karl_client_data = {}

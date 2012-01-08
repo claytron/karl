@@ -15,7 +15,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-"""Publish static resources under /static/"""
+"""Publish static resources under /static/
+   and jslibs static resources under /static-jslibs/"""
 
 import os
 import re
@@ -30,7 +31,7 @@ from karl.views.utils import get_user_home
 here = os.path.abspath(os.path.dirname(__file__))
 
 # five year expires time
-static_view = static_view('static', cache_max_age=157680000, use_subpath=True)
+static_karl_view = static_view('static', cache_max_age=157680000, use_subpath=True)
 
 version_match = re.compile(r'^r-?\d+$').match
 # version number is "r" plus an integer (possibly negative)
@@ -41,7 +42,25 @@ def versioning_static_view(context, request):
     subpath = request.subpath
     if subpath and version_match(subpath[0]):
         request.subpath = subpath[1:]
-    return static_view(context, request)
+    return static_karl_view(context, request)
+
+
+# five year expires time
+static_jslibs_view = static_view('', package_name='jslibs', cache_max_age=157680000, use_subpath=True)
+
+def versioning_static_jslibs_view(context, request):
+    # if the first element in the subpath is the version number, strip
+    # it out of the subpath (see views/api.py static_url)
+    subpath = request.subpath
+    if subpath and version_match(subpath[0]):
+        request.subpath = subpath[1:]
+    # ... go to resources by default, but also allow externals/XXX
+    # (comes handy for devel mode)
+    subpath = request.subpath
+    if subpath and subpath[0] != 'externals':
+        request.subpath = ('resources', ) + subpath
+    return static_jslibs_view(context, request)
+
 
 def site_view(context, request):
     home, extra_path = get_user_home(context, request)

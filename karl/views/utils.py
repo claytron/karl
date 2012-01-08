@@ -640,6 +640,14 @@ def get_static_url(request):
     return static_url
 
 
+def get_static_jslibs_url(request):
+    # to avoid cyclical imports
+    from karl.views.api import _get_static_rev
+    app_url = request.application_url
+    static_url = '%s/static/%s' % (app_url, _get_static_rev())
+    return static_url
+
+
 def stream_iter(stream, blocksize=1<<20, close=True):
     try:
         block = stream.read(blocksize)

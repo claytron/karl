@@ -46,6 +46,15 @@
     factory=".site.StaticRootFactory"
   />
 
+  <route
+    name="jslibs-static"
+    path="/jslibs-static*subpath"
+    view_for=".site.StaticRootFactory"
+    view=".site.versioning_static_jslibs_view"
+    factory=".site.StaticRootFactory"
+  />
+
+
   <!-- Redirect requests to site root, to correct URL -->
   <view
     for="karl.models.interfaces.ISite"
