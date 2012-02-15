@@ -11,6 +11,7 @@
       <meta id="karl-app-url" content="${api.app_url}"/>
       <meta id="karl-here-url" content="${api.here_url}"/>
       <meta id="karl-static-url" content="${api.static_url}"/>
+      <meta id="jslibs-static-url" content="${api.static_jslibs_url}"/>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <title>${api.page_title}</title>
       <link rel="shortcut icon" href="${api.static_url}/images/favicon.ico"
@@ -128,8 +129,8 @@
         <!--
         <script type="text/javascript" src="${api.static_url}/tinymce/min/tinymce-3.3.9.2.karl.min.js">//</script>
         -->
-        <script type="text/javascript" src="${api.static_jslibs_url}/tinymce-3.4.7-jquery-static-plugins1.min.js">//</script>
-        <script type="text/javascript" src="${api.static_url}/tinymce/min/tinymce-3.4.7-karl.min.js">//</script>
+        <script type="text/javascript" src="${api.static_jslibs_url}/tinymce-3.4.8-jquery-static-plugins1.min.js">//</script>
+        <script type="text/javascript" src="${api.static_url}/tinymce/min/tinymce-3.4.8-karl.min.js">//</script>
       </tal:resources>
 
       <!-- tinymce, development mode -->
@@ -169,17 +170,19 @@
         <script src="${api.static_url}/tinymce/3.3.9.2/plugins/tinyautosave/langs/en.js" type="text/javascript"></script>
 -->
 
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7-extras/jquery.tinysafe.js" type="text/javascript">//</script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/tiny_mce_src.js" type="text/javascript">//</script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/langs/en.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/themes/advanced/editor_template_src.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/themes/advanced/langs/en.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/plugins/paste/editor_plugin_src.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/plugins/spellchecker/editor_plugin_src.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/plugins/advlist/editor_plugin.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/plugins/lists/editor_plugin.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/plugins/print/editor_plugin.js" type="text/javascript"></script>
-        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.7/jscripts/tiny_mce/plugins/table/editor_plugin.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8-extras/jquery.tinysafe.js" type="text/javascript">//</script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/tiny_mce_src.js" type="text/javascript">//</script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/langs/en.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/themes/advanced/editor_template_src.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/themes/advanced/langs/en.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/paste/editor_plugin_src.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/spellchecker/editor_plugin_src.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/advlist/editor_plugin.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/lists/editor_plugin.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/print/editor_plugin.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/table/editor_plugin.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/autosave/editor_plugin_src.js" type="text/javascript"></script>
+        <script src="${api.static_jslibs_url}/externals/tinymce/3.4.8/jscripts/tiny_mce/plugins/autosave/langs/en.js" type="text/javascript"></script>
 
         <script src="${api.static_url}/tinymce/karl-tiny-wire.js" type="text/javascript">//</script>
         <script src="${api.static_url}/tinymce/wicked/editor_plugin_src.js" type="text/javascript"></script>
@@ -200,8 +203,6 @@
         <script src="${api.static_url}/tinymce/kaltura/editor_plugin_src.js" type="text/javascript"></script>
         <script src="${api.static_url}/tinymce/kaltura/langs/en.js" type="text/javascript"></script>
         <script src="${api.static_url}/tinymce/advimagescale/editor_plugin_src.js" type="text/javascript"></script>
-        <script src="${api.static_url}/tinymce/tinyautosave/editor_plugin_src.js" type="text/javascript"></script>
-        <script src="${api.static_url}/tinymce/tinyautosave/langs/en.js" type="text/javascript"></script>
       </tal:resources>
 
     </metal:resources>
@@ -214,13 +215,13 @@
       <!--
       <link rel="stylesheet" href="${api.static_url}/tinymce/min/tinymce-3.3.9.2.karl.min.css" type="text/css"/>
       -->
-      <link rel="stylesheet" href="${api.static_url}/tinymce/min/tinymce-3.4.7-karl.min.css" type="text/css"/>
+      <link rel="stylesheet" href="${api.static_url}/tinymce/min/tinymce-3.4.8-karl.min.css" type="text/css"/>
       </tal:resources>
       <tal:resources condition="api.js_devel_mode == 'true' and (True or 'field.KarlTinyMCE' in api.form_field_templates)">
       <!--
       <link rel="stylesheet" href="${api.static_url}/tinymce/tinymce-3.3.9.2.karl.css" type="text/css"/>
       -->
-      <link rel="stylesheet" href="${api.static_url}/tinymce/tinymce-3.4.7-karl.css" type="text/css"/>
+      <link rel="stylesheet" href="${api.static_url}/tinymce/tinymce-3.4.8-karl.css" type="text/css"/>
       </tal:resources>
 
       <tal:resources condition="not api.js_devel_mode == 'true'">

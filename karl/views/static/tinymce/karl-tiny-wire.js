@@ -9,7 +9,7 @@ $(document).ready(function() {
     // See if the wiki plugin needs to be enabled.
     var widget_data = window.karl_client_data && karl_client_data.text || {};
     var kaltura_data = window.karl_client_data && karl_client_data.kaltura || {};
-    var plugins = 'paste,embedmedia,spellchecker,imagedrawer,advimagescale,advlist,print,table,tinyautosave';
+    var plugins = 'paste,embedmedia,spellchecker,imagedrawer,advimagescale,advlist,print,table,autosave';
     if (widget_data.enable_wiki_plugin) {
         plugins += ',wicked';
     }
@@ -19,10 +19,20 @@ $(document).ready(function() {
 
     // Url that contains the context prefix
     var here_url = $('#karl-here-url')[0].content;
+    var static_url = $('#karl-static-url')[0].content;
     // the root url of the tinymce tree
-    var tinymce_url = $('#karl-static-url')[0].content + '/tinymce/3.3.9.2';
+    var tinymce_url = $('#jslibs-static-url')[0].content + '/externals/tinymce/3.4.8/jscripts/tiny_mce';
+
     // The root url of Karl
     var app_url = $("#karl-app-url").eq(0).attr('content');
+
+    // Load our local plugins (needed, because they are not
+    // under the tinymce tree)
+    $.each(['advimagescale', 'embedmedia', 'imagedrawer', 'kaltura', 'wicked'], function(index, plugin_name) {
+        tinymce.PluginManager.load(plugin_name, static_url + '/tinymce/' + plugin_name + '/');
+    });
+    tinymce.ThemeManager.load('advanced', static_url + '/tinymce/' + 'theme-advanced-3.4.8' + '/editor_template.js');
+    
 
     // initialize the editor widget(s)
     $('.mceEditor').tinysafe({
@@ -53,9 +63,8 @@ $(document).ready(function() {
         paste_convert_headers_to_strong : true,
         theme_advanced_toolbar_location: 'top',
         theme_advanced_buttons1: 'bold, italic, underline, |, forecolor, backcolor, removeformat, |, bullist, numlist, |, justifycenter, justifyleft,justifyright, justifyfull, |, indent, outdent, |, image, embedmedia, kaltura, |, print',
-        theme_advanced_buttons2: 'formatselect, fontselect, fontsizeselect, |, blockquote, hr, |, link, addwickedlink, delwickedlink, code, spellchecker, tinyautosave',
+        theme_advanced_buttons2: 'formatselect, fontselect, fontsizeselect, |, blockquote, hr, |, link, addwickedlink, delwickedlink, code, spellchecker, restoredraft',
         theme_advanced_buttons3: '',
-        theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "center",
         plugins: plugins,
         extended_valid_elements: "object[classid|codebase|width|height],param[name|value],embed[quality|type|pluginspage|width|height|src|wmode|swliveconnect|allowscriptaccess|allowfullscreen|seamlesstabbing|name|base|flashvars|flashVars|bgcolor],script[src]",
