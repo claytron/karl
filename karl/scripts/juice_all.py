@@ -50,8 +50,8 @@ def main(argv=sys.argv):
     run_juicer(os.path.join(static_dir, 'karl-multifileupload.js')) 
     run_juicer(os.path.join(static_dir, 'karl-multifileupload.css'))  
 
-    run_juicer(os.path.join(tinymce_dir, 'tinymce-3.4.7-karl.js')) 
-    run_juicer(os.path.join(tinymce_dir, 'tinymce-3.4.7-karl.css')) 
+    run_juicer(os.path.join(tinymce_dir, 'tinymce-3.4.8-karl.js')) 
+    run_juicer(os.path.join(tinymce_dir, 'tinymce-3.4.8-karl.css')) 
 
     run_juicer(os.path.join(static_dir, 'karl-wikitoc.js')) 
     run_juicer(os.path.join(static_dir, 'karl-wikitoc.css'))  
