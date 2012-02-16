@@ -74,7 +74,7 @@ requires = [
     # XXX Move to eggs in buildout?
     'repoze.errorlog',
     'supervisor',
-    'jslibs >= 0.6',
+    'jslibs >= 0.7',
 ]
 
 setup(name='karl',
